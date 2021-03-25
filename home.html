@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PN Eyelashes</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+    <style>
+        html,
+        body {
+            font-family: "lobster", cursive;
+        }
+        
+        @media {}
+    </style>
+</head>
+
+<body>
+    <nav class="nav h-15 fixed top-0 left-0">
+        <div class="nav-collapse z-10 relative p-2">
+            <div class="nav-logo" onclick="expandNav()">
+                <img src="/static/images/PN Logo.png" class="rounded-full shadow-lg" alt="" width="40" height="40" />
+            </div>
+        </div>
+        <div class="nav-expand hidden z-10 relative p-2 rounded-t-3xl border-2 border-red-200">
+            <div class="nav-logo">
+                <img src="/static/images/PN Logo.png" class="rounded-full shadow-lg" alt="" width="40" height="40" />
+            </div>
+            <ul class="text-lg mx-auto text-center border-t-2 m-2 border-green-200">
+                <li class="p-2">
+                    <a href="">Home</a>
+                </li>
+                <li class="p-2"><a href="#">Products</a></li>
+                <li class="p-2"><a href="#">Contact</a></li>
+                <li class="p-2"><a href="#">About</a></li>
+                <li class="p-2">
+                    <a href="#" onclick="collapseNav()">Close</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-layout hidden bg-gray-200 h-screen w-screen absolute top-0 left-0 z-0" onclick="collapseNav()"></div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="page-highlight border-2 border-green-200 h-15 rounded-full p-1.5 m-2 w-11/12 pl-28">
+            Prettier Every Day
+        </div>
+        <div class="border-t-2 border-b-2 border-red-200 h-15 p-2 grid grid-cols-1">
+            <div class="product justify-self-center" style="max-width: 375px">
+                <div class="product-title flex justify-between">
+                    <div class="product-name">3D-0.05</div>
+                    <div class="product-details border-2 border-blue-200 rounded-full pl-2 pr-2 text-xs mb-1">
+                        More Details
+                    </div>
+                </div>
+                <div class="product-image-display grid grid-cols-5 gap-2 border-2 border-red-200">
+                    <div class="product-main-image col-span-4">
+                        <img src="/static/images/products/3D/3D.jpg" alt="" />
+                    </div>
+                    <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
+                        <div class="hidden product-thumbnail-image-display-up text-center">
+                            ^
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="hidden product-thumbnail-image-display-down text-center">
+                            ^
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product justify-self-center" style="max-width: 375px">
+                <div class="product-title flex justify-between">
+                    <div class="product-name">3D-0.05</div>
+                    <div class="product-details border-2 border-blue-200 rounded-full pl-2 pr-2 text-xs mb-1">
+                        More Details
+                    </div>
+                </div>
+                <div class="product-image-display grid grid-cols-5 gap-2 border-2 border-red-200">
+                    <div class="product-main-image col-span-4">
+                        <img src="/static/images/products/3D/3D.jpg" alt="" />
+                    </div>
+                    <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
+                        <div class="hidden product-thumbnail-image-display-up text-center">
+                            ^
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="hidden product-thumbnail-image-display-down text-center">
+                            ^
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product justify-self-center" style="max-width: 375px">
+                <div class="product-title flex justify-between">
+                    <div class="product-name">3D-0.05</div>
+                    <div class="product-details border-2 border-blue-200 rounded-full pl-2 pr-2 text-xs mb-1">
+                        More Details
+                    </div>
+                </div>
+                <div class="product-image-display grid grid-cols-5 gap-2 border-2 border-red-200">
+                    <div class="product-main-image col-span-4">
+                        <img src="/static/images/products/3D/3D.jpg" alt="" />
+                    </div>
+                    <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
+                        <div class="hidden product-thumbnail-image-display-up text-center">
+                            ^
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="hidden product-thumbnail-image-display-down text-center">
+                            ^
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product justify-self-center" style="max-width: 375px">
+                <div class="product-title flex justify-between">
+                    <div class="product-name">3D-0.05</div>
+                    <div class="product-details border-2 border-blue-200 rounded-full pl-2 pr-2 text-xs mb-1">
+                        More Details
+                    </div>
+                </div>
+                <div class="product-image-display grid grid-cols-5 gap-2 border-2 border-red-200">
+                    <div class="product-main-image col-span-4">
+                        <img src="/static/images/products/3D/3D.jpg" alt="" />
+                    </div>
+                    <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
+                        <div class="hidden product-thumbnail-image-display-up text-center">
+                            ^
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="hidden product-thumbnail-image-display-down text-center">
+                            ^
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END --- Main content -->
+    <footer class="w-screen h-28 border-2 border-yellow-400"></footer>
+    <nav class="nav-bottom fixed bottom-0 right-0 flex flex-col-reverse gap-2 p-2">
+        <div class="nav-bottom-contact-logo">
+            <img class="rounded-full shadow-lg" src="/static/images/Contact Logo.png" alt="" width="40" height="40" />
+        </div>
+        <div class="nav-bottom-cart-logo">
+            <img class="rounded-full shadow-lg" src="/static/images/Cart Logo.png" alt="" width="40" height="40" />
+        </div>
+    </nav>
+</body>
+<script>
+    function expandNav() {
+        var collapseNav = document.getElementsByClassName("nav-collapse")[0];
+        var expandNav = document.getElementsByClassName("nav-expand")[0];
+        var layoutNav = document.getElementsByClassName("nav-layout")[0];
+
+        collapseNav.classList.add("hidden");
+        expandNav.classList.remove("hidden");
+        layoutNav.classList.remove("hidden");
+    }
+
+    function collapseNav() {
+        var collapseNav = document.getElementsByClassName("nav-collapse")[0];
+        var expandNav = document.getElementsByClassName("nav-expand")[0];
+        var layoutNav = document.getElementsByClassName("nav-layout")[0];
+
+        collapseNav.classList.remove("hidden");
+        expandNav.classList.add("hidden");
+        layoutNav.classList.add("hidden");
+    }
+</script>
+
+</html>
