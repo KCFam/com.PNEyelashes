@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="counter1">Counter1: {{ counter }}</div>
+    <div id="counter2">Counter2: {{ counter }}</div>
+</body>
+<script>
+    const CounterApp1 = {
+        data() {
+            return {
+                counter: 0,
+            };
+        },
+        mounted() {
+            setInterval(() => {
+                this.counter++;
+            }, 1000);
+        },
+    };
+    const CounterApp2 = {
+        data() {
+            return {
+                counter: 0,
+            };
+        },
+        mounted() {
+            setInterval(() => {
+                this.counter++;
+            }, 500);
+        },
+    };
+
+    const app1 = Vue.createApp(CounterApp1).mount("#counter1");
+    const app2 = Vue.createApp(CounterApp2).mount("#counter2");
+</script>
+
+</html>

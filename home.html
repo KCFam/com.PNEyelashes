@@ -15,6 +15,16 @@
             font-family: "lobster", cursive;
         }
         
+        .product {
+            border: solid green 2px;
+            border-radius: 1rem;
+            padding: 0.25rem;
+        }
+        
+        .product-title {
+            margin-left: 0.25rem;
+        }
+        
         @media {}
     </style>
 </head>
@@ -22,7 +32,7 @@
 <body>
     <nav class="nav h-15 fixed top-0 left-0">
         <div class="nav-collapse z-10 relative p-2">
-            <div class="nav-logo" onclick="expandNav()">
+            <div class="nav-logo bg-gray-50 rounded-full" onclick="expandNav()">
                 <img src="/static/images/PN Logo.png" class="rounded-full shadow-lg" alt="" width="40" height="40" />
             </div>
         </div>
@@ -50,7 +60,7 @@
         <div class="page-highlight border-2 border-green-200 h-15 rounded-full p-1.5 m-2 w-11/12 pl-28">
             Prettier Every Day
         </div>
-        <div class="border-t-2 border-b-2 border-red-200 h-15 p-2 grid grid-cols-1">
+        <div class="border-t-2 border-b-2 border-red-200 h-15 p-2 grid grid-cols-1 gap-2">
             <div class="product justify-self-center" style="max-width: 375px">
                 <div class="product-title flex justify-between">
                     <div class="product-name">3D-0.05</div>
@@ -58,14 +68,11 @@
                         More Details
                     </div>
                 </div>
-                <div class="product-image-display grid grid-cols-5 gap-2 border-2 border-red-200">
+                <div class="product-image-display grid grid-cols-5 gap-2">
                     <div class="product-main-image col-span-4">
                         <img src="/static/images/products/3D/3D.jpg" alt="" />
                     </div>
                     <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
-                        <div class="hidden product-thumbnail-image-display-up text-center">
-                            ^
-                        </div>
                         <div class="product-thumbnail-image">
                             <img src="/static/images/products/3D/3D.jpg" alt="" />
                         </div>
@@ -80,9 +87,6 @@
                         </div>
                         <div class="product-thumbnail-image">
                             <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="hidden product-thumbnail-image-display-down text-center">
-                            ^
                         </div>
                     </div>
                 </div>
@@ -94,14 +98,11 @@
                         More Details
                     </div>
                 </div>
-                <div class="product-image-display grid grid-cols-5 gap-2 border-2 border-red-200">
+                <div class="product-image-display grid grid-cols-5 gap-2">
                     <div class="product-main-image col-span-4">
                         <img src="/static/images/products/3D/3D.jpg" alt="" />
                     </div>
                     <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
-                        <div class="hidden product-thumbnail-image-display-up text-center">
-                            ^
-                        </div>
                         <div class="product-thumbnail-image">
                             <img src="/static/images/products/3D/3D.jpg" alt="" />
                         </div>
@@ -116,9 +117,6 @@
                         </div>
                         <div class="product-thumbnail-image">
                             <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="hidden product-thumbnail-image-display-down text-center">
-                            ^
                         </div>
                     </div>
                 </div>
@@ -130,14 +128,11 @@
                         More Details
                     </div>
                 </div>
-                <div class="product-image-display grid grid-cols-5 gap-2 border-2 border-red-200">
+                <div class="product-image-display grid grid-cols-5 gap-2">
                     <div class="product-main-image col-span-4">
                         <img src="/static/images/products/3D/3D.jpg" alt="" />
                     </div>
                     <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
-                        <div class="hidden product-thumbnail-image-display-up text-center">
-                            ^
-                        </div>
                         <div class="product-thumbnail-image">
                             <img src="/static/images/products/3D/3D.jpg" alt="" />
                         </div>
@@ -152,9 +147,6 @@
                         </div>
                         <div class="product-thumbnail-image">
                             <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="hidden product-thumbnail-image-display-down text-center">
-                            ^
                         </div>
                     </div>
                 </div>
@@ -166,14 +158,11 @@
                         More Details
                     </div>
                 </div>
-                <div class="product-image-display grid grid-cols-5 gap-2 border-2 border-red-200">
+                <div class="product-image-display grid grid-cols-5 gap-2">
                     <div class="product-main-image col-span-4">
                         <img src="/static/images/products/3D/3D.jpg" alt="" />
                     </div>
                     <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
-                        <div class="hidden product-thumbnail-image-display-up text-center">
-                            ^
-                        </div>
                         <div class="product-thumbnail-image">
                             <img src="/static/images/products/3D/3D.jpg" alt="" />
                         </div>
@@ -188,9 +177,6 @@
                         </div>
                         <div class="product-thumbnail-image">
                             <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="hidden product-thumbnail-image-display-down text-center">
-                            ^
                         </div>
                     </div>
                 </div>
@@ -198,14 +184,44 @@
         </div>
     </div>
     <!-- END --- Main content -->
-    <footer class="w-screen h-28 border-2 border-yellow-400"></footer>
-    <nav class="nav-bottom fixed bottom-0 right-0 flex flex-col-reverse gap-2 p-2">
-        <div class="nav-bottom-contact-logo">
+    <footer class="w-screen border-2 border-yellow-400">
+        <div class="footer-split grid grid-cols-1">
+            <!-- <div class="bottom-0 right-0 flex flex-col-reverse gap-2 p-2">
+                <div class="footer-left-logo border-blue-200 border-2 flex flex-row items-center gap-1">
+                    <img class="rounded-full shadow-lg" src="/static/images/Email Logo.png" alt="" width="40" height="40" />
+                    <div>XuongMiPhuongNhi@gmail.com</div>
+                </div>
+                <div class="footer-left-logo flex flex-row">
+                    <img class="rounded-full shadow-lg" src="/static/images/Cart Logo.png" alt="" width="40" height="40" />
+                </div>
+            </div> -->
+            <div class="bottom-0 right-0 flex flex-col-reverse gap-2 p-2">
+                <div class="footer-right-logo flex flex-row-reverse items-center gap-2">
+                    <img class="rounded-full shadow-lg" src="/static/images/Contact Logo.png" alt="" width="40" height="40" />
+                    <div class="text-xl">+1 (603)560-4354</div>
+                </div>
+                <div class="footer-right-logo flex flex-row-reverse items-center gap-1">
+                    <img class="rounded-full shadow-lg" src="/static/images/Email Logo.png" alt="" width="40" height="40" />
+                    <div class="text-xl">XuongMiPhuongNhi@gmail.com</div>
+                </div>
+                <div class="footer-right-logo flex flex-row-reverse items-center gap-2">
+                    <img class="rounded-full shadow-lg" src="/static/images/Facebook Logo.jpg" alt="" width="40" height="40" />
+                    <div class="text-xl">PNEyelashes</div>
+                </div>
+                <div class="footer-left-logo flex flex-row-reverse items-center gap-2">
+                    <img class="rounded-full shadow-lg" src="/static/images/PN Logo.png" alt="" width="40" height="40" />
+                    <div class="text-xl">Copy right PNEyelashes LLC</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <nav class="nav-bottom fixed bottom-0 right-0 flex flex-col-reverse gap-2">
+        <div class="nav-bottom-contact-logo p-2.5">
             <img class="rounded-full shadow-lg" src="/static/images/Contact Logo.png" alt="" width="40" height="40" />
         </div>
-        <div class="nav-bottom-cart-logo">
+        <!-- <div class="nav-bottom-cart-logo">
             <img class="rounded-full shadow-lg" src="/static/images/Cart Logo.png" alt="" width="40" height="40" />
-        </div>
+        </div> -->
     </nav>
 </body>
 <script>
