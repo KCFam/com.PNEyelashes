@@ -25,17 +25,39 @@
             margin-left: 0.25rem;
         }
         
+        .page-highlight {
+            display: grid;
+            grid-template-columns: auto 30px;
+            column-gap: 5px;
+        }
+        
+        #search-input {
+            justify-self: end;
+        }
+        
+        .svg-icon {
+            stroke: blue;
+        }
+        
+        .footer-banner {
+            background-image: url("/static/images/PN\ Business\ Card_Eng.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        
         @media {}
     </style>
 </head>
 
 <body>
     <nav class="nav h-15 fixed top-0 left-0">
-        <div class="nav-collapse z-10 relative p-2">
+        <div class="nav-collapse z-10 relative p-2 flex flex-row justify-between">
             <div class="nav-logo bg-gray-50 rounded-full" onclick="expandNav()">
                 <img src="/static/images/PN Logo.png" class="rounded-full shadow-lg" alt="" width="40" height="40" />
             </div>
         </div>
+
+        <!--NAV hidden bar-->
         <div class="nav-expand hidden z-10 relative p-2 rounded-t-3xl border-2 border-red-200">
             <div class="nav-logo">
                 <img src="/static/images/PN Logo.png" class="rounded-full shadow-lg" alt="" width="40" height="40" />
@@ -57,8 +79,18 @@
 
     <!-- Main content -->
     <div class="main-content">
-        <div class="page-highlight border-2 border-green-200 h-15 rounded-full p-1.5 m-2 w-11/12 pl-28">
-            Prettier Every Day
+        <div class="page-highlight border-2 border-green-200 h-15 rounded-full p-1.5 m-2">
+            <div id="page-highlight-text" class="text-center w-full">
+                Prettier Every Day
+            </div>
+            <input id="search-input" class="search-input text-right w-9/12 border-b-2 border-yellow-200 hidden outline-none" type="text" />
+            <div class="nav-search" onclick="clickSearchButton()">
+                <svg class="svg-icon" height="20" width="20" viewBox="0 0 20 20">
+            <path
+              d="M18.125,15.804l-4.038-4.037c0.675-1.079,1.012-2.308,1.01-3.534C15.089,4.62,12.199,1.75,8.584,1.75C4.815,1.75,1.982,4.726,2,8.286c0.021,3.577,2.908,6.549,6.578,6.549c1.241,0,2.417-0.347,3.44-0.985l4.032,4.026c0.167,0.166,0.43,0.166,0.596,0l1.479-1.478C18.292,16.234,18.292,15.968,18.125,15.804 M8.578,13.99c-3.198,0-5.716-2.593-5.733-5.71c-0.017-3.084,2.438-5.686,5.74-5.686c3.197,0,5.625,2.493,5.64,5.624C14.242,11.548,11.621,13.99,8.578,13.99 M16.349,16.981l-3.637-3.635c0.131-0.11,0.721-0.695,0.876-0.884l3.642,3.639L16.349,16.981z"
+            ></path>
+          </svg>
+            </div>
         </div>
         <div class="border-t-2 border-b-2 border-red-200 h-15 p-2 grid grid-cols-1 gap-2">
             <div class="product justify-self-center" style="max-width: 375px">
@@ -185,7 +217,7 @@
     </div>
     <!-- END --- Main content -->
     <footer class="w-screen border-2 border-yellow-400">
-        <div class="footer-split grid grid-cols-1">
+        <!-- <div class="footer-split grid grid-cols-1">
             <!-- <div class="bottom-0 right-0 flex flex-col-reverse gap-2 p-2">
                 <div class="footer-left-logo border-blue-200 border-2 flex flex-row items-center gap-1">
                     <img class="rounded-full shadow-lg" src="/static/images/Email Logo.png" alt="" width="40" height="40" />
@@ -194,7 +226,7 @@
                 <div class="footer-left-logo flex flex-row">
                     <img class="rounded-full shadow-lg" src="/static/images/Cart Logo.png" alt="" width="40" height="40" />
                 </div>
-            </div> -->
+            </div> 
             <div class="bottom-0 right-0 flex flex-col-reverse gap-2 p-2">
                 <div class="footer-right-logo flex flex-row-reverse items-center gap-2">
                     <img class="rounded-full shadow-lg" src="/static/images/Contact Logo.png" alt="" width="40" height="40" />
@@ -210,10 +242,11 @@
                 </div>
                 <div class="footer-left-logo flex flex-row-reverse items-center gap-2">
                     <img class="rounded-full shadow-lg" src="/static/images/PN Logo.png" alt="" width="40" height="40" />
-                    <div class="text-xl">Copy right PNEyelashes LLC</div>
+                    <div class="text-xl">Copyright PN LLC</div>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <div class="footer-banner w-screen h-52"></div>
     </footer>
     <nav class="nav-bottom fixed bottom-0 right-0 flex flex-col-reverse gap-2">
         <div class="nav-bottom-contact-logo p-2.5">
@@ -225,6 +258,12 @@
     </nav>
 </body>
 <script>
+    function clickSearchButton() {
+        document.getElementById("page-highlight-text").classList.toggle("hidden");
+        document.getElementById("search-input").classList.toggle("hidden");
+        document.getElementById("search-input").focus();
+    }
+
     function expandNav() {
         var collapseNav = document.getElementsByClassName("nav-collapse")[0];
         var expandNav = document.getElementsByClassName("nav-expand")[0];
