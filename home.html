@@ -38,14 +38,13 @@
         .svg-icon {
             stroke: blue;
         }
-        
+        /*         
         .footer-banner {
             background-image: url("/static/images/PN\ Business\ Card_Eng.jpg");
             background-repeat: no-repeat;
-            background-size: 100%;
-        }
-        
-        @media {}
+            background-size: contain;
+            background-position: center top;
+        } */
     </style>
 </head>
 
@@ -246,42 +245,46 @@
                 </div>
             </div>
         </div> -->
-        <div class="footer-banner w-screen h-52"></div>
+        <div class="footer-banner w-screen h-52">
+            <img class="h-full" src="/static/images/PN Business Card_Eng.jpg" alt="" />
+        </div>
     </footer>
     <nav class="nav-bottom fixed bottom-0 right-0 flex flex-col-reverse gap-2">
         <div class="nav-bottom-contact-logo p-2.5">
-            <img class="rounded-full shadow-lg" src="/static/images/Contact Logo.png" alt="" width="40" height="40" />
+            <img class="rounded-full shadow-lg" src="/static/images/Contact Logo.png " alt=" " width="40 " height="40 " />
         </div>
-        <!-- <div class="nav-bottom-cart-logo">
-            <img class="rounded-full shadow-lg" src="/static/images/Cart Logo.png" alt="" width="40" height="40" />
+        <!-- <div class="nav-bottom-cart-logo ">
+            <img class="rounded-full shadow-lg " src="/static/images/Cart Logo.png " alt=" " width="40 " height="40 " />
         </div> -->
     </nav>
 </body>
 <script>
     function clickSearchButton() {
-        document.getElementById("page-highlight-text").classList.toggle("hidden");
-        document.getElementById("search-input").classList.toggle("hidden");
-        document.getElementById("search-input").focus();
+        document
+            .getElementById("page-highlight-text ")
+            .classList.toggle("hidden ");
+        document.getElementById("search-input ").classList.toggle("hidden ");
+        document.getElementById("search-input ").focus();
     }
 
     function expandNav() {
-        var collapseNav = document.getElementsByClassName("nav-collapse")[0];
-        var expandNav = document.getElementsByClassName("nav-expand")[0];
-        var layoutNav = document.getElementsByClassName("nav-layout")[0];
+        var collapseNav = document.getElementsByClassName("nav-collapse ")[0];
+        var expandNav = document.getElementsByClassName("nav-expand ")[0];
+        var layoutNav = document.getElementsByClassName("nav-layout ")[0];
 
-        collapseNav.classList.add("hidden");
-        expandNav.classList.remove("hidden");
-        layoutNav.classList.remove("hidden");
+        collapseNav.classList.add("hidden ");
+        expandNav.classList.remove("hidden ");
+        layoutNav.classList.remove("hidden ");
     }
 
     function collapseNav() {
-        var collapseNav = document.getElementsByClassName("nav-collapse")[0];
-        var expandNav = document.getElementsByClassName("nav-expand")[0];
-        var layoutNav = document.getElementsByClassName("nav-layout")[0];
+        var collapseNav = document.getElementsByClassName("nav-collapse ")[0];
+        var expandNav = document.getElementsByClassName("nav-expand ")[0];
+        var layoutNav = document.getElementsByClassName("nav-layout ")[0];
 
-        collapseNav.classList.remove("hidden");
-        expandNav.classList.add("hidden");
-        layoutNav.classList.add("hidden");
+        collapseNav.classList.remove("hidden ");
+        expandNav.classList.add("hidden ");
+        layoutNav.classList.add("hidden ");
     }
 </script>
 
