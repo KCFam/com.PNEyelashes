@@ -10,25 +10,49 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
     <style>
+        * {
+            outline: none;
+        }
+        
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
         html,
         body {
             font-family: "lobster", cursive;
+            overflow-x: hidden;
+            background-color: #a5c63a;
         }
         
         .product {
             border: solid green 2px;
-            border-radius: 1rem;
+            border-radius: 1rem 1rem 0 0;
             padding: 0.25rem;
+            background-color: white;
         }
         
         .product-title {
             margin-left: 0.25rem;
         }
         
+        .page-top-hightlight {
+            /* background-color: #d6a327; */
+            /* background-color: #a5c63a; */
+            border-bottom-width: 2px;
+            border-bottom-color: #d6a327;
+            /* box-shadow: 0 0 60px 10px #d6a327; */
+            /* outer cyan */
+        }
+        
         .page-highlight {
             display: grid;
             grid-template-columns: auto 30px;
             column-gap: 5px;
+            border: solid 2px #d6a327;
         }
         
         #search-input {
@@ -38,13 +62,6 @@
         .svg-icon {
             stroke: blue;
         }
-        /*         
-        .footer-banner {
-            background-image: url("/static/images/PN\ Business\ Card_Eng.jpg");
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center top;
-        } */
     </style>
 </head>
 
@@ -78,20 +95,90 @@
 
     <!-- Main content -->
     <div class="main-content">
-        <div class="page-highlight border-2 border-green-200 h-15 rounded-full p-1.5 m-2">
-            <div id="page-highlight-text" class="text-center w-full">
-                Prettier Every Day
-            </div>
-            <input id="search-input" class="search-input text-right w-9/12 border-b-2 border-yellow-200 hidden outline-none" type="text" />
-            <div class="nav-search" onclick="clickSearchButton()">
-                <svg class="svg-icon" height="20" width="20" viewBox="0 0 20 20">
-            <path
-              d="M18.125,15.804l-4.038-4.037c0.675-1.079,1.012-2.308,1.01-3.534C15.089,4.62,12.199,1.75,8.584,1.75C4.815,1.75,1.982,4.726,2,8.286c0.021,3.577,2.908,6.549,6.578,6.549c1.241,0,2.417-0.347,3.44-0.985l4.032,4.026c0.167,0.166,0.43,0.166,0.596,0l1.479-1.478C18.292,16.234,18.292,15.968,18.125,15.804 M8.578,13.99c-3.198,0-5.716-2.593-5.733-5.71c-0.017-3.084,2.438-5.686,5.74-5.686c3.197,0,5.625,2.493,5.64,5.624C14.242,11.548,11.621,13.99,8.578,13.99 M16.349,16.981l-3.637-3.635c0.131-0.11,0.721-0.695,0.876-0.884l3.642,3.639L16.349,16.981z"
-            ></path>
-          </svg>
+        <div class="page-top-hightlight w-full p-2 bg-gray-200">
+            <div class="page-highlight bg-gray-50 h-15 rounded-full p-1.5">
+                <div id="page-highlight-text" class="text-center w-full">
+                    Prettier Every Day
+                </div>
+                <input id="search-input" class="search-input text-right w-9/12 border-b-2 border-yellow-200 hidden outline-none" type="text" />
+                <div class="nav-search" onclick="clickSearchButton()">
+                    <svg class="svg-icon" height="20" width="20" viewBox="0 0 20 20">
+              <path
+                d="M18.125,15.804l-4.038-4.037c0.675-1.079,1.012-2.308,1.01-3.534C15.089,4.62,12.199,1.75,8.584,1.75C4.815,1.75,1.982,4.726,2,8.286c0.021,3.577,2.908,6.549,6.578,6.549c1.241,0,2.417-0.347,3.44-0.985l4.032,4.026c0.167,0.166,0.43,0.166,0.596,0l1.479-1.478C18.292,16.234,18.292,15.968,18.125,15.804 M8.578,13.99c-3.198,0-5.716-2.593-5.733-5.71c-0.017-3.084,2.438-5.686,5.74-5.686c3.197,0,5.625,2.493,5.64,5.624C14.242,11.548,11.621,13.99,8.578,13.99 M16.349,16.981l-3.637-3.635c0.131-0.11,0.721-0.695,0.876-0.884l3.642,3.639L16.349,16.981z"
+              ></path>
+            </svg>
+                </div>
             </div>
         </div>
-        <div class="border-t-2 border-b-2 border-red-200 h-15 p-2 grid grid-cols-1 gap-2">
+
+        <div id="product-data" class="h-15 p-2 grid grid-cols-1 gap-2">
+            <div v-for="product in products" class="product justify-self-center w-full" style="max-width: 375px">
+                <!-- <div id="loading">
+                    <img id="loading-image" alt="Loading..." />
+                </div> -->
+                <div class="product-title flex justify-between">
+                    <div class="product-name">{{product.name}}</div>
+                    <div class="product-details border-2 border-blue-200 rounded-full pl-2 pr-2 text-xs mb-1">
+                        More Details
+                    </div>
+                </div>
+                <div class="product-image-display grid grid-cols-5 gap-2">
+                    <div class="product-main-image col-span-4">
+                        <img :src="product.mainImage" alt="" />
+                    </div>
+                    <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="product justify-self-center" style="max-width: 375px">
+                <div id="loading">
+                    <img id="loading-image" alt="Loading..." />
+                </div>
+                <div class="product-title flex justify-between">
+                    <div class="product-name">3D-0.05</div>
+                    <div class="product-details border-2 border-blue-200 rounded-full pl-2 pr-2 text-xs mb-1">
+                        More Details
+                    </div>
+                </div>
+                <div class="product-image-display grid grid-cols-5 gap-2">
+                    <div class="product-main-image col-span-4">
+                        <img src="/static/images/products/3D/3D.jpg" alt="" />
+                    </div>
+                    <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                        <div class="product-thumbnail-image">
+                            <img src="/static/images/products/3D/3D.jpg" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="product justify-self-center" style="max-width: 375px">
                 <div class="product-title flex justify-between">
                     <div class="product-name">3D-0.05</div>
@@ -181,43 +268,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="product justify-self-center" style="max-width: 375px">
-                <div class="product-title flex justify-between">
-                    <div class="product-name">3D-0.05</div>
-                    <div class="product-details border-2 border-blue-200 rounded-full pl-2 pr-2 text-xs mb-1">
-                        More Details
-                    </div>
-                </div>
-                <div class="product-image-display grid grid-cols-5 gap-2">
-                    <div class="product-main-image col-span-4">
-                        <img src="/static/images/products/3D/3D.jpg" alt="" />
-                    </div>
-                    <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- END --- Main content -->
-    <footer class="w-screen border-2 border-yellow-400">
+    <footer class="w-screen z-20 flex flex-col justify-items-stretch">
         <!-- <div class="footer-split grid grid-cols-1">
-            <!-- <div class="bottom-0 right-0 flex flex-col-reverse gap-2 p-2">
+            <div class="bottom-0 right-0 flex flex-col-reverse gap-2 p-2">
                 <div class="footer-left-logo border-blue-200 border-2 flex flex-row items-center gap-1">
                     <img class="rounded-full shadow-lg" src="/static/images/Email Logo.png" alt="" width="40" height="40" />
                     <div>XuongMiPhuongNhi@gmail.com</div>
@@ -225,7 +282,7 @@
                 <div class="footer-left-logo flex flex-row">
                     <img class="rounded-full shadow-lg" src="/static/images/Cart Logo.png" alt="" width="40" height="40" />
                 </div>
-            </div> 
+            </div>
             <div class="bottom-0 right-0 flex flex-col-reverse gap-2 p-2">
                 <div class="footer-right-logo flex flex-row-reverse items-center gap-2">
                     <img class="rounded-full shadow-lg" src="/static/images/Contact Logo.png" alt="" width="40" height="40" />
@@ -245,11 +302,14 @@
                 </div>
             </div>
         </div> -->
-        <div class="footer-banner w-screen h-52">
-            <img class="h-full" src="/static/images/PN Business Card_Eng.jpg" alt="" />
+        <div class="footer-banner h-52">
+            <img class="" src="/static/images/PN Business Card_Eng.jpg" alt="" />
+        </div>
+        <div class="copyright h-16 justify-self-center p-2 pt-6 text-white">
+            Copyright 2021, PN Properties LLC
         </div>
     </footer>
-    <nav class="nav-bottom fixed bottom-0 right-0 flex flex-col-reverse gap-2">
+    <nav class="nav-bottom fixed bottom-0 right-0 flex flex-col-reverse gap-2 z-10">
         <div class="nav-bottom-contact-logo p-2.5">
             <img class="rounded-full shadow-lg" src="/static/images/Contact Logo.png " alt=" " width="40 " height="40 " />
         </div>
@@ -286,6 +346,26 @@
         expandNav.classList.add("hidden ");
         layoutNav.classList.add("hidden ");
     }
+
+    // window.onload = function() {
+    //     document.getElementById("loading").style.display = "none";
+    // };
+
+    var productApp = {
+        data() {
+            return {
+                products: [{
+                    name: "item1",
+                    mainImage: "./static/images/products/3D/Default Image.jpg",
+                }, {
+                    name: "item1",
+                    mainImage: "./static/images/products/3D/Default Image.jpg",
+                }, ],
+            };
+        },
+    };
+
+    const productData = Vue.createApp(productApp).mount("#product-data");
 </script>
 
 </html>

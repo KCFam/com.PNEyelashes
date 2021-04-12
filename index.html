@@ -7,11 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://unpkg.com/vue@next"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            outline: none;
+        }
+        
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-family: "lobster", cursive;
+        }
+        
+        body {}
+    </style>
 </head>
 
-<body>
-    <div id="counter1">Counter1: {{ counter }}</div>
-    <div id="counter2">Counter2: {{ counter }}</div>
+<body class="m-0 p-0">
+    <div class="wrapdisplay">
+        <header class="fixed w-full z-10">
+            <div class="header-topbar text-black h-10 flex items-center" style="background-color: #f7dbd8">
+                <p class="trade-notice w-full text-center">Prettier Every Day</p>
+            </div>
+            <div class="nav-menu">
+                <div class="upper-header h-14 grid grid-cols-3"></div>
+                <div class="top-menu"></div>
+            </div>
+        </header>
+    </div>
 </body>
 <script>
     const CounterApp1 = {
@@ -39,8 +68,8 @@
         },
     };
 
-    const app1 = Vue.createApp(CounterApp1).mount("#counter1");
-    const app2 = Vue.createApp(CounterApp2).mount("#counter2");
+    const app1 = Vue.createApp(CounterApp1).mount(" #counter1 ");
+    const app2 = Vue.createApp(CounterApp2).mount("#counter2 ");
 </script>
 
 </html>
