@@ -115,7 +115,8 @@
         
         .product-display {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(365px, 1fr));
+            padding: 5px;
         }
     </style>
 </head>
@@ -172,8 +173,8 @@
                 </div>
             </div>
             <!-- Product display -->
-            <div class="product-display p-2 gap-2">
-                <div v-for="product in resultQuery" class="product justify-self-center w-full" style="max-width: 475px">
+            <div class="product-display gap-2">
+                <div v-for="product in resultQuery" class="product justify-self-center w-full">
                     <div class="product-title flex justify-between">
                         <div class="product-name text-center w-full">
                             {{product.name}}
