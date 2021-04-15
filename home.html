@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/vue@next"></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/MoreInformationButton.css" />
     <style>
         * {
             outline: none;
@@ -25,18 +26,48 @@
         body {
             font-family: "lobster", cursive;
             overflow-x: hidden;
-            background-color: #a5c63a;
         }
         
         .product {
-            border: solid green 2px;
+            border: solid #d6a327 4px;
             border-radius: 1rem 1rem 0 0;
             padding: 0.25rem;
             background-color: white;
         }
         
+        .product-name {
+            border-bottom: solid 2px #a5c63a;
+            margin-bottom: 2px;
+        }
+        
         .product-title {
             margin-left: 0.25rem;
+        }
+        /* .product-main-image {
+            height: 201px;
+        } */
+        
+        .product-info {
+            display: grid;
+            grid-template-rows: 20px auto 30px;
+        }
+        
+        .product-options {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: 1.5rem auto;
+        }
+        
+        .product-price span {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 800;
+        }
+        
+        .product-more-info-button {
+            border-color: #a5c63a;
+            background-color: #a5c63a;
+            color: white;
+            text-shadow: 0px 1px 1px #eb452b, 0px 2px 1px #efa032, 0px 3px 1px #46b59b;
         }
         
         .page-top-hightlight {
@@ -48,6 +79,22 @@
             /* outer cyan */
         }
         
+        .logo-text-color-text {
+            color: #d6a327;
+        }
+        
+        .logo-text-color-bg {
+            background-color: #d6a327;
+        }
+        
+        .logo-circle-color-text {
+            color: #a5c63a;
+        }
+        
+        .logo-circle-color-bg {
+            background-color: #a5c63a;
+        }
+        
         .page-highlight {
             display: grid;
             grid-template-columns: auto 30px;
@@ -55,317 +102,350 @@
             border: solid 2px #d6a327;
         }
         
-        #search-input {
+        .search-input {
             justify-self: end;
         }
         
-        .svg-icon {
-            stroke: blue;
+        .nav-expand {
+            background-image: url("/static/images/Menu\ Border.jpg");
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            border: 2px solid #d6a327;
+        }
+        
+        .product-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
         }
     </style>
 </head>
 
-<body>
-    <nav class="nav h-15 fixed top-0 left-0">
-        <div class="nav-collapse z-10 relative p-2 flex flex-row justify-between">
-            <div class="nav-logo bg-gray-50 rounded-full" onclick="expandNav()">
-                <img src="/static/images/PN Logo.png" class="rounded-full shadow-lg" alt="" width="40" height="40" />
-            </div>
-        </div>
-
-        <!--NAV hidden bar-->
-        <div class="nav-expand hidden z-10 relative p-2 rounded-t-3xl border-2 border-red-200">
-            <div class="nav-logo">
-                <img src="/static/images/PN Logo.png" class="rounded-full shadow-lg" alt="" width="40" height="40" />
-            </div>
-            <ul class="text-lg mx-auto text-center border-t-2 m-2 border-green-200">
-                <li class="p-2">
-                    <a href="">Home</a>
-                </li>
-                <li class="p-2"><a href="#">Products</a></li>
-                <li class="p-2"><a href="#">Contact</a></li>
-                <li class="p-2"><a href="#">About</a></li>
-                <li class="p-2">
-                    <a href="#" onclick="collapseNav()">Close</a>
-                </li>
-            </ul>
-        </div>
-        <div class="nav-layout hidden bg-gray-200 h-screen w-screen absolute top-0 left-0 z-0" onclick="collapseNav()"></div>
-    </nav>
-
-    <!-- Main content -->
-    <div class="main-content">
-        <div class="page-top-hightlight w-full p-2 bg-gray-200">
-            <div class="page-highlight bg-gray-50 h-15 rounded-full p-1.5">
-                <div id="page-highlight-text" class="text-center w-full">
-                    Prettier Every Day
-                </div>
-                <input id="search-input" class="search-input text-right w-9/12 border-b-2 border-yellow-200 hidden outline-none" type="text" />
-                <div class="nav-search" onclick="clickSearchButton()">
-                    <svg class="svg-icon" height="20" width="20" viewBox="0 0 20 20">
-              <path
-                d="M18.125,15.804l-4.038-4.037c0.675-1.079,1.012-2.308,1.01-3.534C15.089,4.62,12.199,1.75,8.584,1.75C4.815,1.75,1.982,4.726,2,8.286c0.021,3.577,2.908,6.549,6.578,6.549c1.241,0,2.417-0.347,3.44-0.985l4.032,4.026c0.167,0.166,0.43,0.166,0.596,0l1.479-1.478C18.292,16.234,18.292,15.968,18.125,15.804 M8.578,13.99c-3.198,0-5.716-2.593-5.733-5.71c-0.017-3.084,2.438-5.686,5.74-5.686c3.197,0,5.625,2.493,5.64,5.624C14.242,11.548,11.621,13.99,8.578,13.99 M16.349,16.981l-3.637-3.635c0.131-0.11,0.721-0.695,0.876-0.884l3.642,3.639L16.349,16.981z"
-              ></path>
-            </svg>
-                </div>
-            </div>
-        </div>
-
-        <div id="product-data" class="h-15 p-2 grid grid-cols-1 gap-2">
-            <div v-for="product in products" class="product justify-self-center w-full" style="max-width: 375px">
-                <!-- <div id="loading">
-                    <img id="loading-image" alt="Loading..." />
-                </div> -->
-                <div class="product-title flex justify-between">
-                    <div class="product-name">{{product.name}}</div>
-                    <div class="product-details border-2 border-blue-200 rounded-full pl-2 pr-2 text-xs mb-1">
-                        More Details
-                    </div>
-                </div>
-                <div class="product-image-display grid grid-cols-5 gap-2">
-                    <div class="product-main-image col-span-4">
-                        <img :src="product.mainImage" alt="" />
-                    </div>
-                    <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="product justify-self-center" style="max-width: 375px">
-                <div id="loading">
-                    <img id="loading-image" alt="Loading..." />
-                </div>
-                <div class="product-title flex justify-between">
-                    <div class="product-name">3D-0.05</div>
-                    <div class="product-details border-2 border-blue-200 rounded-full pl-2 pr-2 text-xs mb-1">
-                        More Details
-                    </div>
-                </div>
-                <div class="product-image-display grid grid-cols-5 gap-2">
-                    <div class="product-main-image col-span-4">
-                        <img src="/static/images/products/3D/3D.jpg" alt="" />
-                    </div>
-                    <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                    </div>
+<body class="logo-circle-color-bg">
+    <div id="product-data">
+        <!-- Header NAV -->
+        <nav class="nav h-15 fixed top-0 left-0 z-10">
+            <div class="nav-collapse relative p-2 flex flex-row justify-between">
+                <div class="nav-logo bg-gray-50 rounded-full" onclick="expandNav()">
+                    <img src="/static/images/PN Logo.png" class="rounded-full shadow-lg" alt="" width="40" height="40" />
                 </div>
             </div>
 
-            <div class="product justify-self-center" style="max-width: 375px">
-                <div class="product-title flex justify-between">
-                    <div class="product-name">3D-0.05</div>
-                    <div class="product-details border-2 border-blue-200 rounded-full pl-2 pr-2 text-xs mb-1">
-                        More Details
-                    </div>
+            <!--NAV hidden bar-->
+            <div class="nav-expand hidden z-10 relative bg-white rounded-r-3xl">
+                <div class="nav-logo float-right p-2">
+                    <img src="/static/images/PN Logo.png" class="rounded-full" alt="" width="40" height="40" />
                 </div>
-                <div class="product-image-display grid grid-cols-5 gap-2">
-                    <div class="product-main-image col-span-4">
-                        <img src="/static/images/products/3D/3D.jpg" alt="" />
+                <ul class="text-lg mx-auto text-center m-2 pr-2">
+                    <li class="p-2 pl-12">
+                        <a href="">Home</a>
+                    </li>
+                    <li class="p-2 pl-10"><a href="#">Products</a></li>
+                    <li class="p-2 pl-14"><a href="#">Contact</a></li>
+                    <li class="p-2 pl-20"><a href="#">About</a></li>
+                    <li class="p-2 pl-16">
+                        <a href="#" onclick="collapseNav()">Close</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-layout hidden bg-white h-screen w-screen absolute top-0 left-0 z-0" onclick="collapseNav()"></div>
+        </nav>
+
+        <!-- Main content -->
+        <div class="main-content relative">
+            <!-- Loading -->
+            <div id="loading" class="w-screen h-screen fixed top-0 left-0 bg-white z-20">
+                loading...
+            </div>
+            <div class="page-top-hightlight w-full p-2 bg-gray-200">
+                <div class="page-highlight bg-white h-15 rounded-full p-1.5">
+                    <div v-if="!isTypingSearch" id="page-highlight-text" class="text-center w-full">
+                        Prettier Every Day
                     </div>
-                    <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
+                    <input v-if="isTypingSearch" id="searchInput" ref="searchInput" v-model="searchQuery" placeholder="Find product..." style="line-height: 1.4rem" class="search-input text-right w-9/12 border-b-2 border-yellow-200 outline-none" type="text" />
+                    <div id="search-button" class="nav-search" @click="clickSearchButton()">
+                        <svg class="svg-icon" height="20" width="20" viewBox="0 0 20 20">
+                <path
+                  d="M18.125,15.804l-4.038-4.037c0.675-1.079,1.012-2.308,1.01-3.534C15.089,4.62,12.199,1.75,8.584,1.75C4.815,1.75,1.982,4.726,2,8.286c0.021,3.577,2.908,6.549,6.578,6.549c1.241,0,2.417-0.347,3.44-0.985l4.032,4.026c0.167,0.166,0.43,0.166,0.596,0l1.479-1.478C18.292,16.234,18.292,15.968,18.125,15.804 M8.578,13.99c-3.198,0-5.716-2.593-5.733-5.71c-0.017-3.084,2.438-5.686,5.74-5.686c3.197,0,5.625,2.493,5.64,5.624C14.242,11.548,11.621,13.99,8.578,13.99 M16.349,16.981l-3.637-3.635c0.131-0.11,0.721-0.695,0.876-0.884l3.642,3.639L16.349,16.981z"
+                ></path>
+              </svg>
                     </div>
                 </div>
             </div>
-            <div class="product justify-self-center" style="max-width: 375px">
-                <div class="product-title flex justify-between">
-                    <div class="product-name">3D-0.05</div>
-                    <div class="product-details border-2 border-blue-200 rounded-full pl-2 pr-2 text-xs mb-1">
-                        More Details
+            <!-- Product display -->
+            <div class="product-display p-2 gap-2">
+                <div v-for="product in resultQuery" class="product justify-self-center w-full" style="max-width: 475px">
+                    <div class="product-title flex justify-between">
+                        <div class="product-name text-center w-full">
+                            {{product.name}}
+                        </div>
                     </div>
+                    <div class="product-image-display grid grid-cols-5 gap-2">
+                        <div class="product-main-image col-span-4 pl-1 w-full relative z-0">
+                            <img style="width: 100%; max-height: 200px" :src="product.mainImage" alt="" />
+                            <div class="product-more-information-button absolute bottom-0 right-0" onClick="showProductInfo(this)">
+                                <div class="perspective-text">
+                                    <div class="perspective-line">
+                                        <p></p>
+                                        <p>Click</p>
+                                    </div>
+                                    <div class="perspective-line">
+                                        <p>Click</p>
+                                        <p>For More</p>
+                                    </div>
+                                    <div class="perspective-line">
+                                        <p>For More</p>
+                                        <p>Information</p>
+                                    </div>
+                                    <div class="perspective-line">
+                                        <p>Information</p>
+                                        <p>Product</p>
+                                    </div>
+                                    <div class="perspective-line">
+                                        <p>Product</p>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: none" class="product-info w-full h-full bg-white opacity-75 absolute top-0 left-1 p-2">
+                                <div class="product-info-first-row flex justify-between items-center">
+                                    <div class="start-review flex flex-row">
+                                        <div class="star-review-icon" v-for="index in 5" :key="index">
+                                            <svg v-if="product.starReview > index - 0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" stroke="#d6a327" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                          <path
+                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+                          />
+                        </svg>
+
+                                            <svg v-else-if="product.starReview > index - 1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" srtoke="#d6a327" class="bi bi-star-fill" viewBox="0 0 16 16">
+                          <path
+                            fill="yellow"
+                            d="M 5.354 5.119 L 7.538 0.792 C 7.624 0.614 7.803 0.501 8 0.5 C 8.183 0.5 7.929 7.997 8.028 8.192 L 8 13.187 C 8 13.187 3.516 15.484 3.465 15.493 C 3.123 15.553 2.797 15.239 2.865 14.851 L 3.695 10.121 L 0.173 6.765 C 0.062 6.66 0 6.514 0.001 6.362 C 0.001 6.255 0.03 6.151 0.086 6.06 C 0.166 5.926 0.302 5.836 0.456 5.815 L 5.354 5.119 Z"
+                          ></path>
+
+                          <line
+                            fill="yellow"
+                            x1="8.008583410137422"
+                            y1="0.6670601499504913"
+                            x2="8.008583410137422"
+                            y2="13.011338349133183"
+                          ></line>
+                          <path
+                            stroke="#d6a327"
+                            fill-opacity="0"
+                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+                          />
+                        </svg>
+                                            <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" stroke="#d6a327" fill="white" class="bi bi-star" viewBox="0 0 16 16">
+                          <path
+                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+                          />
+                        </svg>
+                                        </div>
+                                    </div>
+                                    <div class="product-info-close rounded-full" onClick="this.parentElement.parentElement.style.display = 'none'">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path
+                          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                        />
+                      </svg>
+                                    </div>
+                                </div>
+                                <div class="product-info-second-row product-options gap-x-2">
+                                    <div class="col-span-2 flex">
+                                        <p>Options Available:</p>
+                                        <a class="product-more-info-button border-2 border-blue-200 rounded-lg text-sm ml-2 px-2">More Info...</a
+                      >
+                    </div>
+                    <p>- Thickness:</p>
+                    <p>{{product.thickness}}</p>
+                    <p>- Curl:</p>
+                    <p>{{product.curl}}</p>
+                    <p>- Length:</p>
+                    <p>{{product.length}}</p>
+                  </div>
+                  <div
+                    class="product-info-third-row flex justify-between items-end"
+                  >
+                    <div class="product-price text-xl">
+                      $<span>{{product.pricePerBox}}</span>/box
+                    </div>
+                    <div class="product-share pb-1">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="deeppink"
+                        class="bi bi-heart-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-                <div class="product-image-display grid grid-cols-5 gap-2">
-                    <div class="product-main-image col-span-4">
-                        <img src="/static/images/products/3D/3D.jpg" alt="" />
-                    </div>
-                    <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                    </div>
+              </div>
+              <div
+                style="max-height: 196px"
+                class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1"
+              >
+                <div
+                  v-for="thumbnailImage in product.subImages"
+                  class="product-thumbnail-image"
+                  @click="selectThumbnailImage(product, thumbnailImage)"
+                >
+                  <img
+                    :src="thumbnailImage"
+                    alt=""
+                    style="
+                      max-width: 100%;
+                      max-height: 100%;
+                      width: 60px;
+                      height: 45px;
+                    "
+                  />
                 </div>
+              </div>
             </div>
-            <div class="product justify-self-center" style="max-width: 375px">
-                <div class="product-title flex justify-between">
-                    <div class="product-name">3D-0.05</div>
-                    <div class="product-details border-2 border-blue-200 rounded-full pl-2 pr-2 text-xs mb-1">
-                        More Details
-                    </div>
-                </div>
-                <div class="product-image-display grid grid-cols-5 gap-2">
-                    <div class="product-main-image col-span-4">
-                        <img src="/static/images/products/3D/3D.jpg" alt="" />
-                    </div>
-                    <div style="max-height: 176px" class="product-thumbnail-image-display h-full overflow-auto flex flex-col gap-1">
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                        <div class="product-thumbnail-image">
-                            <img src="/static/images/products/3D/3D.jpg" alt="" />
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+          </div>
         </div>
-    </div>
-    <!-- END --- Main content -->
-    <footer class="w-screen z-20 flex flex-col justify-items-stretch">
-        <!-- <div class="footer-split grid grid-cols-1">
-            <div class="bottom-0 right-0 flex flex-col-reverse gap-2 p-2">
-                <div class="footer-left-logo border-blue-200 border-2 flex flex-row items-center gap-1">
-                    <img class="rounded-full shadow-lg" src="/static/images/Email Logo.png" alt="" width="40" height="40" />
-                    <div>XuongMiPhuongNhi@gmail.com</div>
-                </div>
-                <div class="footer-left-logo flex flex-row">
-                    <img class="rounded-full shadow-lg" src="/static/images/Cart Logo.png" alt="" width="40" height="40" />
-                </div>
-            </div>
-            <div class="bottom-0 right-0 flex flex-col-reverse gap-2 p-2">
-                <div class="footer-right-logo flex flex-row-reverse items-center gap-2">
-                    <img class="rounded-full shadow-lg" src="/static/images/Contact Logo.png" alt="" width="40" height="40" />
-                    <div class="text-xl">+1 (603)560-4354</div>
-                </div>
-                <div class="footer-right-logo flex flex-row-reverse items-center gap-1">
-                    <img class="rounded-full shadow-lg" src="/static/images/Email Logo.png" alt="" width="40" height="40" />
-                    <div class="text-xl">XuongMiPhuongNhi@gmail.com</div>
-                </div>
-                <div class="footer-right-logo flex flex-row-reverse items-center gap-2">
-                    <img class="rounded-full shadow-lg" src="/static/images/Facebook Logo.jpg" alt="" width="40" height="40" />
-                    <div class="text-xl">PNEyelashes</div>
-                </div>
-                <div class="footer-left-logo flex flex-row-reverse items-center gap-2">
-                    <img class="rounded-full shadow-lg" src="/static/images/PN Logo.png" alt="" width="40" height="40" />
-                    <div class="text-xl">Copyright PN LLC</div>
-                </div>
-            </div>
-        </div> -->
+      </div>
+      <!-- END --- Main content -->
+      <footer class="w-screen z-20 flex flex-col justify-items-stretch">
         <div class="footer-banner h-52">
-            <img class="" src="/static/images/PN Business Card_Eng.jpg" alt="" />
+          <img class="" src="/static/images/PN Business Card_Eng.jpg" alt="" />
         </div>
         <div class="copyright h-16 justify-self-center p-2 pt-6 text-white">
-            Copyright 2021, PN Properties LLC
+          Copyright 2021, PN Properties LLC
         </div>
-    </footer>
-    <nav class="nav-bottom fixed bottom-0 right-0 flex flex-col-reverse gap-2 z-10">
+      </footer>
+      <!-- Bottom NAV-->
+      <nav
+        class="nav-bottom fixed bottom-0 right-0 flex flex-col-reverse gap-2 z-10"
+      >
         <div class="nav-bottom-contact-logo p-2.5">
-            <img class="rounded-full shadow-lg" src="/static/images/Contact Logo.png " alt=" " width="40 " height="40 " />
+          <img
+            class="rounded-full shadow-lg"
+            src="/static/images/Contact Logo.png "
+            alt=" "
+            width="40"
+            height="40"
+          />
         </div>
-        <!-- <div class="nav-bottom-cart-logo ">
-            <img class="rounded-full shadow-lg " src="/static/images/Cart Logo.png " alt=" " width="40 " height="40 " />
-        </div> -->
-    </nav>
-</body>
-<script>
-    function clickSearchButton() {
-        document
-            .getElementById("page-highlight-text ")
-            .classList.toggle("hidden ");
-        document.getElementById("search-input ").classList.toggle("hidden ");
-        document.getElementById("search-input ").focus();
-    }
+      </nav>
+    </div>
+  </body>
+  <script>
+    window.onload = function () {
+      document.getElementById("loading").style.display = "none";
+    };
 
     function expandNav() {
-        var collapseNav = document.getElementsByClassName("nav-collapse ")[0];
-        var expandNav = document.getElementsByClassName("nav-expand ")[0];
-        var layoutNav = document.getElementsByClassName("nav-layout ")[0];
+      var collapseNav = document.getElementsByClassName("nav-collapse")[0];
+      var expandNav = document.getElementsByClassName("nav-expand")[0];
+      var layoutNav = document.getElementsByClassName("nav-layout")[0];
 
-        collapseNav.classList.add("hidden ");
-        expandNav.classList.remove("hidden ");
-        layoutNav.classList.remove("hidden ");
+      collapseNav.classList.add("hidden");
+      expandNav.classList.remove("hidden");
+      layoutNav.classList.remove("hidden");
     }
 
     function collapseNav() {
-        var collapseNav = document.getElementsByClassName("nav-collapse ")[0];
-        var expandNav = document.getElementsByClassName("nav-expand ")[0];
-        var layoutNav = document.getElementsByClassName("nav-layout ")[0];
+      var collapseNav = document.getElementsByClassName("nav-collapse")[0];
+      var expandNav = document.getElementsByClassName("nav-expand")[0];
+      var layoutNav = document.getElementsByClassName("nav-layout")[0];
 
-        collapseNav.classList.remove("hidden ");
-        expandNav.classList.add("hidden ");
-        layoutNav.classList.add("hidden ");
+      collapseNav.classList.remove("hidden");
+      expandNav.classList.add("hidden");
+      layoutNav.classList.add("hidden");
+    }
+    function showProductInfo(elPproductInfoButton) {
+      elPproductInfoButton.nextElementSibling.style.display = "";
     }
 
-    // window.onload = function() {
-    //     document.getElementById("loading").style.display = "none";
-    // };
-
     var productApp = {
-        data() {
-            return {
-                products: [{
-                    name: "item1",
-                    mainImage: "./static/images/products/3D/Default Image.jpg",
-                }, {
-                    name: "item1",
-                    mainImage: "./static/images/products/3D/Default Image.jpg",
-                }, ],
-            };
+      data() {
+        return {
+          isTypingSearch: false,
+          searchQuery: null,
+          products: [
+            {
+              name: "3D - Loose Fan - 500 Fans",
+              starReview: 3.4,
+              thickness: "0.03, 0.05",
+              curl: "C, CC, D",
+              length:
+                "9mm, 10mm, 11mm, 12mm, 13mm, 14mm, 15mm, 16mm, 17mm, 18mm, 19mm, 20mm",
+              pricePerBox: "9.99",
+              mainImage: "./static/images/products/3D/Sub Image 2.jpg",
+              subImages: [
+                "./static/images/products/3D/Sub Image 2.jpg",
+                "./static/images/products/3D/Sub Image 1.jpg",
+                "./static/images/products/3D/Sub Image 2.jpg",
+                "./static/images/products/3D/Sub Image 1.jpg",
+                "./static/images/products/3D/Sub Image 2.jpg",
+                "./static/images/products/3D/Sub Image 1.jpg",
+                "./static/images/products/3D/Sub Image 2.jpg",
+              ],
+            },
+            {
+              name: "4D - Loose Fan - 500 Fans",
+              mainImage: "./static/images/products/3D/Default Image.jpg",
+            },
+            {
+              name: "4D - Loose Fan - 500 Fans",
+              mainImage: "./static/images/products/3D/Default Image.jpg",
+            },
+            {
+              name: "4D - Loose Fan - 500 Fans",
+              mainImage: "./static/images/products/3D/Default Image.jpg",
+            },
+            {
+              name: "4D - Loose Fan - 500 Fans",
+              mainImage: "./static/images/products/3D/Default Image.jpg",
+            },
+            {
+              name: "4D - Loose Fan - 500 Fans",
+              mainImage: "./static/images/products/3D/Default Image.jpg",
+            },
+          ],
+        };
+      },
+      computed: {
+        resultQuery() {
+          if (this.searchQuery) {
+            return this.products.filter((product) => {
+              return this.searchQuery
+                .toLowerCase()
+                .split(" ")
+                .every((p) => product.name.toLowerCase().includes(p));
+            });
+          } else {
+            return this.products;
+          }
         },
+      },
+      methods: {
+        clickSearchButton() {
+          if (this.isTypingSearch) {
+            // Search Product with searchQuery
+            this.isTypingSearch = false;
+          } else {
+            // Open Seach input
+            this.isTypingSearch = true;
+            this.$nextTick(() => {
+              this.$refs.searchInput.focus();
+            });
+          }
+        },
+        selectThumbnailImage(product, thumbnail) {
+          product["mainImage"] = thumbnail;
+        },
+      },
     };
 
     const productData = Vue.createApp(productApp).mount("#product-data");
-</script>
-
+  </script>
 </html>
